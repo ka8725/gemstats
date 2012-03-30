@@ -1,21 +1,47 @@
-<%= form_tag('/gems', :method => :get) do %>
-  <%= text_field_tag :name, @gem_info.name %>
-  <%= submit_tag %>
-<% end %>
+<div class='hero-unit'>
+  <%= form_tag('/gems', :method => :get) do %>
+    <%= text_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here' %>
+    <%= submit_tag 'Get Info' %>
+  <% end %>
+</div>
 
 <% if @gem_info.persisted? %>
-  <dl>
-   <dd>Gem name:</dd>
-    <dt><%= @gem_info.name %></dt>
-   <dd>Downloads Number:</dd>
-    <dt><%= @gem_info.downloads %></dt>
-   <dd>Gems who uses this gem in runtime environment:</dd>
-    <dt><%= clients(@gem_info.name) %></dt>
-   <dd>Total:</dd>
-    <dt><%= clients(@gem_info.name).count %></dt>
-   <dd>Gems who uses this gem in development environment:</dd>
-    <dt><%= clients(@gem_info.name, :development) %></dt>
-   <dd>Total:</dd>
-    <dt><%= clients(@gem_info.name, :development).count %></dt>
-  </dl>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Gem name</th>
+        <th>Number of downloads</th>
+        <th>Runtime environment</th>
+        <th>Development environment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @gem_info.name %></td>
+        <td><%= @gem_info.downloads %></td>
+        <td>
+          <ul class='gem-list'>
+            <% clients(@gem_info.name).each do |gem_name| %>
+              <li><%= gem_name %></li>
+            <% end %>
+          </ul>
+          <dl class='dl-horizontal'>
+            <dt>Total:</dt>
+              <dd><%= clients(@gem_info.name).count %></dd>
+          </dl>
+        </td>
+        <td>
+          <ul class='gem-list'>
+            <% clients(@gem_info.name, :development).each do |gem_name| %>
+              <li><%= gem_name %></li>
+            <% end %>
+          </ul>
+          <dl class='dl-horizontal'>
+            <dt>Total:</dt>
+              <dd><%= clients(@gem_info.name, :development).count %></dd>
+          </dl>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
