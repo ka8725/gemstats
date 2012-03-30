@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ka8725/gem_stats.git
-  revision: 41ab2b6ab9f491dff2a7645f63252a5eba59f1b5
+  revision: 9f42a02cd8c4f3532128554e390fe698f563d765
   specs:
     gem_stats (0.0.1)
       bson_ext
@@ -53,7 +53,7 @@ GEM
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
-    heroku (2.22.0)
+    heroku (2.23.0)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
       rest-client (~> 1.6.1)
@@ -126,7 +126,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.32)
-    uglifier (1.2.3)
+    uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
 
