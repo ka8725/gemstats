@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ka8725/gem_stats.git
+  revision: 41ab2b6ab9f491dff2a7645f63252a5eba59f1b5
+  specs:
+    gem_stats (0.0.1)
+      bson_ext
+      json
+      mongo_mapper
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,10 +53,6 @@ GEM
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
-    gem_stats (0.0.1)
-      bson_ext
-      json
-      mongo_mapper
     heroku (2.22.0)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
@@ -130,7 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  gem_stats
+  gem_stats!
   heroku
   jquery-rails
   rails (= 3.2.2)
