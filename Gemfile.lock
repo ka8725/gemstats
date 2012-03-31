@@ -1,11 +1,12 @@
 GIT
   remote: git://github.com/ka8725/gem_stats.git
-  revision: 9f42a02cd8c4f3532128554e390fe698f563d765
+  revision: 10c6febbc876ecfb70129ce413e67c2984e903f1
   specs:
     gem_stats (0.0.1)
       bson_ext
       json
       mongo_mapper
+      ruby-progressbar
 
 GEM
   remote: https://rubygems.org/
@@ -82,7 +83,7 @@ GEM
     mime-types (1.18)
     mongo (1.6.1)
       bson (~> 1.6.1)
-    mongo_mapper (0.11.0)
+    mongo_mapper (0.11.1)
       activemodel (~> 3.0)
       activesupport (~> 3.0)
       plucky (~> 0.4.0)
@@ -118,6 +119,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    ruby-progressbar (0.0.10)
     rubyzip (0.9.6.1)
     sass (3.1.15)
     sass-rails (3.2.5)
