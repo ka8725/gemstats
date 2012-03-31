@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ka8725/gem_stats.git
-  revision: 10c6febbc876ecfb70129ce413e67c2984e903f1
+  revision: d9564539e309e32925d38c04e1cbe3a7597b3994
   specs:
     gem_stats (0.0.1)
       bson_ext
