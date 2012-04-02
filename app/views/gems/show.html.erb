@@ -4,7 +4,7 @@
   </header>
   <%= form_tag('/gems', :method => :get, :class => 'form-horizontal') do %>
     <%= text_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here', :class => 'big-field' %>
-    <%= submit_tag 'Submit', :class => 'btn btn-large btn-primary' %>
+    <%= submit_tag 'Submit', :class => 'btn btn-large btn-primary', :name => nil %>
   <% end %>
 </div>
 
@@ -18,8 +18,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr title='<%= @gem_info.info %>'>
-        <td>
+      <tr>
+        <td rowspan='2'>
           <dl class='dl-horizontal'>
             <dt>Name:</dt>
             <dd><%= @gem_info.name%></dd>
@@ -35,6 +35,11 @@
         <%= gems_info(clients(@gem_info.name), 'Dependent gems') %>
         <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
         <%= gems_info(clients(@gem_info.name, :development), 'Dependent gems') %>
+      </tr>
+      <tr>
+        <td colspan='4'>
+          <%= @gem_info.info %>
+        </td>
       </tr>
     </tbody>
   </table>
