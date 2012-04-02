@@ -1,9 +1,9 @@
 class GemsController < ApplicationController
   def show
-    @gem_info = GemInfo.find_by_name(params[:name])
+    @gem_info = GemStats::Gem.find_by_name(params[:id])
   end
 
   def search
-    @gems = GemInfo.where(["name like ?", "#{params[:q]}%"])
+    @gems = GemStats::Gem.where(:name => /#{params[:q]}/).order(:name).fields(:name, :downloads, :version, :info)
   end
 end

@@ -8,14 +8,16 @@
         <th>Name</th>
         <th>Downloads</th>
         <th>Version</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <% @gems.each do |g| %>
         <tr>
-          <td><%= g.name %></td>
+          <td><%= link_to g.name, gem_path(g) %></td>
           <td><%= g.downloads %></td>
           <td><%= g.version %></td>
+          <td><%= g.info %></td>
         </tr>
       <% end %>
     </tbody>

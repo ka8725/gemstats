@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.3'
 gem 'gem_stats', :git => 'git://github.com/ka8725/gem_stats.git'
 
 # Bundle edge Rails instead:

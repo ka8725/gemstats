@@ -1,38 +1,27 @@
-<div class='full-search-bar'>
-<%= form_tag('/gems', :method => :get, :class => 'well form-search form-inline') do %>
-  <h2>Do you want to know who uses your gem?</h2>
-  <%= search_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here...', :class => 'input-medium search-query' %>
-  <%= button_tag :class => 'btn btn-large btn-inverse search', :name => nil do %>
-    <i class='icon-search icon-white'></i>
-  <% end %>
-  <div class='clearfix'></div>
-<% end %>
-</div>
+<%= render 'search_form' %>
 
-<% if @gem_info.persisted? %>
-  <div class='row'>
-    <div class='span4'>
-      <dl class='dl-horizontal'>
-        <dt>Name:</dt>
-        <dd><%= @gem_info.name%></dd>
-        <dt>Version:</dt>
-        <dd><%= @gem_info.version %></dd>
-        <dt>Authors:</dt>
-        <dd><%= @gem_info.authors%></dd>
-        <dt>Downloads:</dt>
-        <dd><%= @gem_info.downloads %></dd>
-      </dl>
-      <p><%= @gem_info.info %></p>
-    </div>
-    <div class='span4'>
-      <strong>Runtime environment</strong>
-      <%= gems_info(@gem_info.runtime_dependencies, 'Dependencies') %>
-      <%= gems_info(clients(@gem_info.name), 'Dependent gems') %>
-    </div>
-    <div class='span4'>
-      <strong>Development environment</strong>
-      <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
-      <%= gems_info(clients(@gem_info.name, :development), 'Dependent gems') %>
-    </div>
+<div class='row'>
+  <div class='span4'>
+    <dl class='dl-horizontal'>
+      <dt>Name:</dt>
+      <dd><%= @gem_info.name%></dd>
+      <dt>Version:</dt>
+      <dd><%= @gem_info.version %></dd>
+      <dt>Authors:</dt>
+      <dd><%= @gem_info.authors%></dd>
+      <dt>Downloads:</dt>
+      <dd><%= @gem_info.downloads %></dd>
+    </dl>
+    <p><%= @gem_info.info %></p>
   </div>
-<% end %>
+  <div class='span4'>
+    <strong>Runtime environment</strong>
+    <%= gems_info(@gem_info.runtime_dependencies, 'Dependencies') %>
+    <%= gems_info(@gem_info.runtime_dependents, 'Dependent gems') %>
+  </div>
+  <div class='span4'>
+    <strong>Development environment</strong>
+    <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
+    <%= gems_info(@gem_info.development_dependents, 'Dependent gems') %>
+  </div>
+</div>
