@@ -12,7 +12,7 @@ group :assets do
   gem 'heroku'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'compass-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
   gem "twitter-bootstrap-rails"
@@ -20,6 +20,16 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
+group :development do
+  gem 'jammit-s3'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

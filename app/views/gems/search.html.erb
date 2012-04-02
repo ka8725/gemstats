@@ -1,0 +1,25 @@
+<%= render 'search_form' %>
+
+<% if @gems.present? %>
+  <h2>Results for search query</h2>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Downloads</th>
+        <th>Version</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @gems.each do |g| %>
+        <tr>
+          <td><%= g.name %></td>
+          <td><%= g.downloads %></td>
+          <td><%= g.version %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h2>No results found</h2>
+<% end %>

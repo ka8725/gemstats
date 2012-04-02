@@ -1,6 +1,9 @@
 Gemstats::Application.routes.draw do
-  match 'gems' => 'gems#show', :as => :gem
-  root :to => 'gems#show'
+  resources :gems, :only => [:index, :show] do
+    get 'search', :on => :collection
+  end
+  root :to => 'gems#index'
+  match 'search', :to => 'gems#search', :as => :search
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

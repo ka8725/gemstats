@@ -6,17 +6,14 @@ module ApplicationHelper
   end
 
   def gems_info(list, name)
+    return if list.blank?
     %Q{
-      <td>
-        <div class="label label-inverse">#{name}</div>
+      <div>
+        <div class="label label-inverse">#{name}: #{list.count}</div>
         <ul class='gem-list'>
-          #{list.map { |gem_name| "<li title='#{gem_name}'>#{gem_name}</li>".html_safe }.join.html_safe}
+          #{list.map { |gem| "<li title='#{gem[:name]}'>#{link_to gem[:name], gem_path(gem)}</li>".html_safe }.join.html_safe}
         </ul>
-        <dl class='dl-horizontal label'>
-          <dt>Total:</dt>
-            <dd>#{list.count}</dd>
-        </dl>
-      </td>
+      </div>
     }.html_safe
   end
 end

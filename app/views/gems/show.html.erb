@@ -1,46 +1,38 @@
-<div class='hero-unit'>
-  <header class='page-header'>
-    <h2>Do you want to know who uses your gem?</h2>
-  </header>
-  <%= form_tag('/gems', :method => :get, :class => 'form-horizontal') do %>
-    <%= text_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here', :class => 'big-field' %>
-    <%= submit_tag 'Submit', :class => 'btn btn-large btn-primary', :name => nil %>
+<div class='full-search-bar'>
+<%= form_tag('/gems', :method => :get, :class => 'well form-search form-inline') do %>
+  <h2>Do you want to know who uses your gem?</h2>
+  <%= search_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here...', :class => 'input-medium search-query' %>
+  <%= button_tag :class => 'btn btn-large btn-inverse search', :name => nil do %>
+    <i class='icon-search icon-white'></i>
   <% end %>
+  <div class='clearfix'></div>
+<% end %>
 </div>
 
 <% if @gem_info.persisted? %>
-  <table class='table'>
-    <thead>
-      <tr>
-        <th>Gem</th>
-        <th colspan='2'>Runtime environment</th>
-        <th colspan='2'>Development environment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td rowspan='2'>
-          <dl class='dl-horizontal'>
-            <dt>Name:</dt>
-            <dd><%= @gem_info.name%></dd>
-            <dt>Version:</dt>
-            <dd><%= @gem_info.version %></dd>
-            <dt>Authors:</dt>
-            <dd><%= @gem_info.authors%></dd>
-            <dt>Downloads:</dt>
-            <dd><%= @gem_info.downloads %></dd>
-          </dl>
-        </td>
-        <%= gems_info(@gem_info.runtime_dependencies, 'Dependencies') %>
-        <%= gems_info(clients(@gem_info.name), 'Dependent gems') %>
-        <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
-        <%= gems_info(clients(@gem_info.name, :development), 'Dependent gems') %>
-      </tr>
-      <tr>
-        <td colspan='4'>
-          <%= @gem_info.info %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class='row'>
+    <div class='span4'>
+      <dl class='dl-horizontal'>
+        <dt>Name:</dt>
+        <dd><%= @gem_info.name%></dd>
+        <dt>Version:</dt>
+        <dd><%= @gem_info.version %></dd>
+        <dt>Authors:</dt>
+        <dd><%= @gem_info.authors%></dd>
+        <dt>Downloads:</dt>
+        <dd><%= @gem_info.downloads %></dd>
+      </dl>
+      <p><%= @gem_info.info %></p>
+    </div>
+    <div class='span4'>
+      <strong>Runtime environment</strong>
+      <%= gems_info(@gem_info.runtime_dependencies, 'Dependencies') %>
+      <%= gems_info(clients(@gem_info.name), 'Dependent gems') %>
+    </div>
+    <div class='span4'>
+      <strong>Development environment</strong>
+      <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
+      <%= gems_info(clients(@gem_info.name, :development), 'Dependent gems') %>
+    </div>
+  </div>
 <% end %>
