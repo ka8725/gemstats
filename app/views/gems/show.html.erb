@@ -1,7 +1,10 @@
 <div class='hero-unit'>
-  <%= form_tag('/gems', :method => :get) do %>
-    <%= text_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here' %>
-    <%= submit_tag 'Get Info' %>
+  <header class='page-header'>
+    <h2>Do you want to know who uses your gem?</h2>
+  </header>
+  <%= form_tag('/gems', :method => :get, :class => 'form-horizontal') do %>
+    <%= text_field_tag :name, @gem_info.name, :placeholder => 'Type gem name here', :class => 'big-field' %>
+    <%= submit_tag 'Submit', :class => 'btn btn-large btn-primary' %>
   <% end %>
 </div>
 
@@ -9,38 +12,29 @@
   <table class='table'>
     <thead>
       <tr>
-        <th>Gem name</th>
-        <th>Number of downloads</th>
-        <th>Runtime environment</th>
-        <th>Development environment</th>
+        <th>Gem</th>
+        <th colspan='2'>Runtime environment</th>
+        <th colspan='2'>Development environment</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><%= @gem_info.name %></td>
-        <td><%= @gem_info.downloads %></td>
+      <tr title='<%= @gem_info.info %>'>
         <td>
-          <ul class='gem-list'>
-            <% clients(@gem_info.name).each do |gem_name| %>
-              <li><%= gem_name %></li>
-            <% end %>
-          </ul>
           <dl class='dl-horizontal'>
-            <dt>Total:</dt>
-              <dd><%= clients(@gem_info.name).count %></dd>
+            <dt>Name:</dt>
+            <dd><%= @gem_info.name%></dd>
+            <dt>Version:</dt>
+            <dd><%= @gem_info.version %></dd>
+            <dt>Authors:</dt>
+            <dd><%= @gem_info.authors%></dd>
+            <dt>Downloads:</dt>
+            <dd><%= @gem_info.downloads %></dd>
           </dl>
         </td>
-        <td>
-          <ul class='gem-list'>
-            <% clients(@gem_info.name, :development).each do |gem_name| %>
-              <li><%= gem_name %></li>
-            <% end %>
-          </ul>
-          <dl class='dl-horizontal'>
-            <dt>Total:</dt>
-              <dd><%= clients(@gem_info.name, :development).count %></dd>
-          </dl>
-        </td>
+        <%= gems_info(@gem_info.runtime_dependencies, 'Dependencies') %>
+        <%= gems_info(clients(@gem_info.name), 'Dependent gems') %>
+        <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
+        <%= gems_info(clients(@gem_info.name, :development), 'Dependent gems') %>
       </tr>
     </tbody>
   </table>
