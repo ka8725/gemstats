@@ -4,6 +4,6 @@ class GemsController < ApplicationController
   end
 
   def search
-    @gems = GemStats::Gem.where(:name => /#{params[:q]}/).order(:name).fields(:name, :downloads, :version, :info)
+    @gems = GemStats::Gem.where(:name => /#{params[:q]}/).order('downloads DESC').fields(:name, :downloads, :version, :info)
   end
 end
