@@ -1,5 +1,9 @@
 @import "compass"
 
+@mixin cloud-tag($i, $fontSize)
+  li.size-#{$i}
+    font-size: $fontSize
+
 .search-query
   @include border-radius(6px 0 0 6px)
   width: 300px
@@ -23,3 +27,16 @@ header.main
 .search-container
   .search-query
     margin-left: 45px
+
+.cloud-tags
+  list-style: none
+  li
+    display: inline
+    padding: 5px
+  @include cloud-tag(0, 14px)
+  @include cloud-tag(1, 16px)
+  @include cloud-tag(2, 18px)
+  @include cloud-tag(3, 20px)
+  @include cloud-tag(4, 22px)
+  @include cloud-tag(5, 24px)
+  @include cloud-tag(6, 26px)

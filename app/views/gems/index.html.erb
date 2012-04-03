@@ -1,1 +1,9 @@
 <%= render 'search_form' %>
+
+<ul class='cloud-tags unstyled'>
+  <% @popular_gems.each do |g| %>
+    <% i = @original_gems.index(g) %>
+    <li class='size-<%= i / (GemStats::Gem::MAX_WEIGHT) %>'><%= link_to g.name, gem_path(g) %></li>
+  <% end %>
+</ul>
+<div class='clearfix'></div>
