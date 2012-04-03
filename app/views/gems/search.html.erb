@@ -15,7 +15,7 @@
       <% @gems.each do |g| %>
         <tr>
           <td><%= link_to g.name, gem_path(g) %></td>
-          <td><%= g.downloads %></td>
+          <td><%= number_with_delimiter(g.downloads, :delimiter => ' ') %></td>
           <td><%= g.version %></td>
           <td><%= g.info %></td>
         </tr>
