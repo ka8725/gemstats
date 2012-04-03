@@ -10,4 +10,12 @@ module ApplicationHelper
       </div>
     }.html_safe
   end
+
+  def urls(gem_info)
+    %w(project gem homepage wiki documentation mailing_list source_code bug_tracker).inject('') do |html, link|
+      url = gem_info.send("#{link}_uri")
+      html << %Q{<dt></dt><dd>#{link_to link.humanize, url}<dd>}.html_safe if url.present?
+      html.html_safe
+    end
+  end
 end

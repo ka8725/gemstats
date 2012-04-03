@@ -12,6 +12,7 @@
       <dd><%= @gem_info.authors%></dd>
       <dt>Downloads:</dt>
       <dd><%= number_with_delimiter(@gem_info.downloads, :delimiter => ' ') %></dd>
+      <%= urls(@gem_info) %>
     </dl>
     <p><%= @gem_info.info %></p>
   </div>
