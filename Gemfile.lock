@@ -72,8 +72,6 @@ GEM
     factory_girl_rails (3.0.0)
       factory_girl (~> 3.0.0)
       railties (>= 3.0.0)
-    faker (1.0.1)
-      i18n (~> 0.4)
     fssm (0.2.8.1)
     heroku (2.23.0)
       launchy (>= 0.3.2)
@@ -199,7 +197,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   factory_girl_rails
-  faker
   gem_stats!
   heroku
   jammit-s3

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe GemInfo do
-  let(:gem_info) { Factory(:gem_info) }
-  subject { gem_info }
+describe GemStats::Gem do
+  let(:gem) { Factory(:gem) }
+  subject { gem }
 
   it { should be_valid }
 end
