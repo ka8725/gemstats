@@ -1,7 +1,8 @@
 <%= render 'search_form' %>
 
 <div class='row'>
-  <div class='span4'>
+  <div class='span4 well'>
+    <h6 class='page-header'>Description</h6>
     <dl class='dl-horizontal'>
       <dt>Name:</dt>
       <dd><%= @gem_info.name%></dd>
@@ -14,13 +15,13 @@
     </dl>
     <p><%= @gem_info.info %></p>
   </div>
-  <div class='span4'>
-    <strong>Runtime environment</strong>
+  <div class='span3 well'>
+    <h6 class='page-header'>Runtime environment</h6>
     <%= gems_info(@gem_info.runtime_dependencies, 'Dependencies') %>
     <%= gems_info(@gem_info.runtime_dependents, 'Dependent gems') %>
   </div>
-  <div class='span4'>
-    <strong>Development environment</strong>
+  <div class='span3 well'>
+    <h6 class='page-header'>Development environment</h6>
     <%= gems_info(@gem_info.development_dependencies, 'Dependencies') %>
     <%= gems_info(@gem_info.development_dependents, 'Dependent gems') %>
   </div>

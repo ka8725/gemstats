@@ -1,8 +1,9 @@
 <%= render 'search_form' %>
 
 <% if @gems.present? %>
+ <div class='well'>
   <h2>Results for search query</h2>
-  <table class='table'>
+  <table class='table table-striped'>
     <thead>
       <tr>
         <th>Name</th>
@@ -22,6 +23,7 @@
       <% end %>
     </tbody>
   </table>
+ </div>
 <% else %>
   <h2>No results found</h2>
 <% end %>
