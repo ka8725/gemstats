@@ -18,4 +18,12 @@ module ApplicationHelper
       html.html_safe
     end
   end
+
+  def page_title
+    @title || "Full statistics for all existing ruby gems - metagem.info"
+  end
+
+  def meta_description
+    @description || "Full statistics for all existing ruby gems including dependents and dependencies. You can find all information for any ruby gem here"
+  end
 end
