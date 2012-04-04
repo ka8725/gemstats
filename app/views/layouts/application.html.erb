@@ -51,7 +51,14 @@
 
       <hr>
       <footer>
-        <p>&copy; 2012, <%= link_to 'GPLv3', 'http://www.opensource.org/licenses/gpl-3.0.html' %></p>
+        <div class='row'>
+         <div class='span4'>
+          &copy; 2012, <%= link_to 'GPLv3', 'http://www.opensource.org/licenses/gpl-3.0.html' %>
+         </div>
+         <div class='span8'>
+          <%= yield(:likes) %>
+         </div>
+        </div>
       </footer>
 
     </div> <!-- /container -->
